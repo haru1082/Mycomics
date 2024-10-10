@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MemberTest < ActiveSupport::TestCase
+class Member::HomesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
