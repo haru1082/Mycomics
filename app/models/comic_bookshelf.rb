@@ -1,0 +1,2 @@
+class ComicBookshelf < ApplicationRecord
+end
