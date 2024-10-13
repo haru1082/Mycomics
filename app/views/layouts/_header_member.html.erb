@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center" style ="background-color:#f8f8ff;">
   <div class="container">
     <a class="navbar-brand" href="/"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,43 +9,43 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to user_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">マイページ</button>
+              <button class="btn" style="background-color:#ff7f50">マイページ</button>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to items_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">漫画一覧</button>
+              <button class="btn" style="background-color:#ccff99">漫画一覧</button>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to bookshelves_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">My本棚</button>
+              <button class="btn" style="background-color:#ccff99">My本棚</button>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">ログアウト</button>
+              <button class="btn" style="background-color:#ccff99">ログアウト</button>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to about_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">About</button>
+              <button class="btn" style="background-color:#ff7f50">About</button>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to comics_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">漫画一覧</button>
+              <button class="btn" style="background-color:#00bfff">漫画一覧</button>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_user_registration_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">新規登録</button>
+              <button class="btn" style="background-color:#ccff99">新規登録</button>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_user_session_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">ログイン</button>
+              <button class="btn" style="background-color:#ffd700">ログイン</button>
             <% end %>
           </li>
         <% end %>

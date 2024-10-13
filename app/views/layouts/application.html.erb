@@ -14,7 +14,7 @@
   
   
   <body class="d-flex flex-column vh-100">
-    <header class="border-bottom">
+    <header class="border-bottom" style ="background-color:#f8f8ff;">
       <% if admin_signed_in? %>
         <%= render 'layouts/header_admin' %>
       <% else %>
@@ -24,7 +24,7 @@
     <main class="mb-auto">
       <%= yield %>
     </main>
-    <footer class="border-top">
+    <footer class="border-top" style ="background-color:#f8f8ff;">
       <%= render 'layouts/footer' %>
     </footer>
   </body>
