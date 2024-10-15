@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get "/users/information/edit" => "users#edit", as: "edit_user"
     get "/users/my_page" => "users#show", as: "user"
     patch "/users/information" => "users#update", as: "update_user"
+    get "/users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/withdraw" => "users#withdraw", as: "withdraw"
 
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
