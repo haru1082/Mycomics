@@ -1,11 +1,12 @@
 class Member::UsersController < ApplicationController
   before_action :authenticate_customer!
   
-  def edit
+  def show
     @user = current_user
+    
   end 
   
-  def show
+  def edit
     @user = current_user
   end 
   
