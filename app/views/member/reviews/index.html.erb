@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-5 text-center border-bottom">
+      <h4 class="px-4">投稿一覧</h4>
+    </div>
+  </div>
+    
+    <% @reviews.each do |review| %>
+  
+   <p>タイトル</p>
+   <span>
+     <%= link_to review.title, review_path(review.id) %>
+   </span>
+  
+
+  <% end %>
+  
+    <div class = "row justify-content-center mt-5">
+      <div class="col-auto">
+        <%= link_to "新規投稿", new_review_path, class: "btn btn-success" %>
+      </div>
+    </div>

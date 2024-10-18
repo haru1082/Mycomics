@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get "/users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/withdraw" => "users#withdraw", as: "withdraw"
 
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :reviews, only: [:new, :index, :show, :create, :edit, :update, :destroy]
 
     resources :bookshelves, only: [:index, :show, :destroy]
 
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get "" => "homes#top", as: "top"
 
     resources :users, only: [:edit, :show, :update, :destroy]
-    resources :posts, only: [:index, :show, :destroy]
+    resources :reviews, only: [:index, :show, :destroy]
     resources :bookshelves, only: [:index, :show]
     resources :comics, only: [:new, :index, :show, :edit, :update, :destroy]
 

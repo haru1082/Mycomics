@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2024_10_10_132837) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "body"
