@@ -6,21 +6,22 @@ class Member::ReviewsController < ApplicationController
   
   def create
     @review = Review.new(review_params)
+    @review.user_id = current_user.id
     if @review.save
       flash[:notice] = "投稿に成功しました。"
-      redirect_to review_path(@review.id)
+      redirect_to reviews_path
     else
       flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end 
-    
   end
   
   def index 
-    @reviews = Review.all
+    @review = Review.all
   end 
   
   def show
+    
     @review = Review.find(params[:id])
   end 
   

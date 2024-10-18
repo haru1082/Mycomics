@@ -4,19 +4,33 @@
       <h4 class="px-4">投稿一覧</h4>
     </div>
   </div>
-    
-    <% @reviews.each do |review| %>
-  
-   <p>タイトル</p>
-   <span>
-     <%= link_to review.title, review_path(review.id) %>
-   </span>
-  
 
-  <% end %>
-  
-    <div class = "row justify-content-center mt-5">
-      <div class="col-auto">
-        <%= link_to "新規投稿", new_review_path, class: "btn btn-success" %>
-      </div>
+  <div class="row justify-content-center mt-5">
+      <table class="table table-bordered">
+        <thead class="table-info text-center">
+          <th class="col-3">漫画タイトル</th>
+          <th class="col-2">評価</th>
+          <th class="col-7">感想</th>
+        </thead>
+        <tbody>
+          <% @review.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to reviews_path(review) do %>
+              <%= review.title %>
+              <% end %>
+            </td>
+            <td></td>
+            <td><%= review.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+
+  <div class = "row justify-content-center mt-5">
+    <div class="col-auto">
+      <%= link_to "新規投稿", new_review_path, class: "btn btn-success" %>
     </div>
+  </div>
+</div>
