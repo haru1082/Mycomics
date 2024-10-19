@@ -5,28 +5,28 @@
     </div>
   </div>
 
- 
-    <div class="row justify-content-center mt-5">
-      <div class="col-6">
-        <table class="table table-bordered">
-          <tr>
-            <th class="table-active">ニックネーム</th>
-            <td><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table-active">メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-        </table>
-      </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-6">
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active">ニックネーム</th>
+          <td><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="table-active">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
     </div>
-    <div class = "row justify-content-center mt-5">
-      <div class="col-auto">
-        <%= link_to "編集する", edit_user_path, class: "btn btn-success" %>
-      </div>
-      <div class="col-auto">
-        <%= link_to "投稿一覧", reviews_path, class: "btn btn-info" %>
-      </div>
+  </div>
+  
+  <div class = "row justify-content-center mt-5">
+    <div class="col-auto">
+      <%= link_to "編集する", edit_user_path, class: "btn btn-success" %>
     </div>
+    <div class="col-auto">
+      <%= link_to "投稿一覧", reviews_path, class: "btn btn-info" %>
+    </div>
+  </div>
 
 </div>

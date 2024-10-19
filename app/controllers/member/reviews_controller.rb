@@ -17,11 +17,10 @@ class Member::ReviewsController < ApplicationController
   end
   
   def index 
-    @review = Review.all
+    @reviews = Review.all
   end 
   
   def show
-    
     @review = Review.find(params[:id])
   end 
   
@@ -36,9 +35,9 @@ class Member::ReviewsController < ApplicationController
   end 
   
   def destroy
-    review = Review.find(params[:id])
-    review.destroy
-    redirect_to '/reviews'
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to reviews_path
   end 
   
   private

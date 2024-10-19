@@ -13,10 +13,10 @@
           <th class="col-7">感想</th>
         </thead>
         <tbody>
-          <% @review.each do |review| %>
+          <% @reviews.each do |review| %>
           <tr>
             <td>
-              <%= link_to reviews_path(review) do %>
+              <%= link_to review_path(review) do %>
               <%= review.title %>
               <% end %>
             </td>
