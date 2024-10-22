@@ -12,10 +12,11 @@ class Member::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-       flash[:my_page] = "会員情報が更新されました。"
+       flash[:user_show] = "会員情報が更新されました。"
        redirect_to user_path(@user)
     else
-        render 'edit'
+       flash[:user_edit] = "会員情報の更新に失敗しました。"
+       render 'edit'
     end
   end 
   

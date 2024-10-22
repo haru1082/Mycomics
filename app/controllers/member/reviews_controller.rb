@@ -8,7 +8,7 @@ class Member::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-      flash[:notice] = "投稿に成功しました。"
+      flash[:review] = "投稿に成功しました。"
       redirect_to reviews_path
     else
       flash.now[:alert] = "投稿に失敗しました。"
@@ -29,9 +29,14 @@ class Member::ReviewsController < ApplicationController
   end 
   
   def update
-    review = Review.find(params[:id])
-    review.update(review_params)
-    redirect_to review_path(review.id)
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+       flash[:review_show] = "投稿内容が更新されました。"
+       redirect_to review_path(@review)
+    else
+       flash[:review_edit] = "投稿内容の更新に失敗しました。"
+       render "edit"
+    end 
   end 
   
   def destroy

@@ -4,7 +4,7 @@
       <h4 class="px-4">登録内容編集</h4>
     </div>
   </div>
-
+  <div class = "row justify-content-md-center text-success mt-3"><%= flash[:user_edit] %></div>
   <%= form_with(model: @user, url: update_user_path, method: :PATCH) do |f| %>
 
     <div class = "row justify-content-md-center mt-5">
@@ -13,7 +13,7 @@
          <%= f.text_field :nickname, autoforcus: true, autocomplete: "nickname", placeholder: "新しいニックネーム" %>
        </div>
     </div>
-    
+
     <div class = "row justify-content-md-center mt-5">
        <div class="col-lg-3 text-right">メールアドレス</div>
        <div class="col-lg-3">
@@ -28,6 +28,6 @@
       <div class="col-lg-3">
        <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
       </div>
-    
+
   <% end %>
 </div>
