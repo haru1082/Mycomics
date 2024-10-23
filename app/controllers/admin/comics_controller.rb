@@ -1,21 +1,19 @@
 class Admin::ComicsController < ApplicationController
-  
+
   def new
-  end 
-  
-  def index
-  end 
-  
+    @comic = Comic.new
+  end
+
   def show
-  end 
-  
+  end
+
   def edit
-  end 
-  
+  end
+
   def update
-  end 
-  
+  end
+
   def destroy
-  end 
-  
+  end
+
 end
