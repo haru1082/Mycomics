@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :show, :update, :destroy]
     resources :reviews, only: [:index, :show, :destroy]
     resources :bookshelves, only: [:index, :show]
-    resources :comics, only: [:new, :index, :show, :edit, :update, :destroy]
+    resources :comics, only: [:new, :create, :show, :edit, :update, :destroy]
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

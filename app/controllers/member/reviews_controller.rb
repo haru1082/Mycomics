@@ -1,5 +1,6 @@
 class Member::ReviewsController < ApplicationController
-  
+  before_action :authenticate_user!
+
   def new
     @review = Review.new
   end 
@@ -12,10 +13,10 @@ class Member::ReviewsController < ApplicationController
       redirect_to reviews_path
     else
       flash.now[:alert] = "投稿に失敗しました。"
-      render :new
+      render "new"
     end 
   end
-  
+    
   def index 
     @reviews = Review.all
   end 

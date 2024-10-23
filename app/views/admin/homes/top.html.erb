@@ -5,48 +5,18 @@
     </div>
   </div>
   
-  <div class="texts-wrapper">
-   <div class="contents-title text-center">
-     <h3>タイトル</h3>
-     <div class="row">
-       <% @comics.each do |comic| %>
-         <div class="col-12 col-md-6 col-lg-4">
-           <div class="card">
-             <img class="card-img-top" src="https://picsum.photos/30/20.jpg" alt="画像">
-               <div class="card-body">
-                 <p class="card-title">Card title</p>
-               </div>
-             </div>
-           </div>
-         <% end %>
-       </div>
-     </div>
-   </div> 
-
-
-  <div class="row">
-    <table class="table col-8 offset-2">
-      <thead class="table-secondary">
-        <tr>
-          <th class="col-2">漫画タイトル</th>
-          <th class="col-4">既巻数</th>
-          <th class="col-2">次巻発売日</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @comics.each do |comic| %>
-          <tr>
-            <td><%= comic.id %></td>
-            <td>
-              <%= link_to admin_comic_path(item.id) do %>
-                <%= comic.title %>
-              <% end %>
-            </td>
-            <td><%= next_date %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row justify-content-md-center mt-5">
+    <% @comics.each do |comic| %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img class="card-img-top" src="default-image.jpg">
+          <div class="card-body">
+            <p class="card-title"><%= comic.title %></p>
+            <p class="card-title"><%= comic.volume %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<%= paginate @comics %>
+  <%= paginate @comics %>
 </div>

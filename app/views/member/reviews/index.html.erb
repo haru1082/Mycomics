@@ -6,26 +6,26 @@
   </div>
   <div class = "row justify-content-md-center text-success mt-3"><%= flash[:review] %></div>
   <div class="row justify-content-center mt-5">
-      <table class="table table-bordered">
-        <thead class="table-info text-center">
-          <th class="col-3">漫画タイトル</th>
-          <th class="col-2">評価</th>
-          <th class="col-7">感想</th>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to review_path(review) do %>
-              <%= review.title %>
-              <% end %>
-            </td>
-            <td></td>
-            <td><%= review.body %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <table class="table table-bordered">
+      <thead class="table-info text-center">
+        <th class="col-3">漫画タイトル</th>
+        <th class="col-2">評価</th>
+        <th class="col-7">感想</th>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= link_to review_path(review) do %>
+            <%= review.title %>
+            <% end %>
+          </td>
+          <td></td>
+          <td><%= review.body %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
   <div class = "row justify-content-center mt-3 mb-5">
