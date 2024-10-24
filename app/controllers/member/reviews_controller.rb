@@ -18,7 +18,7 @@ class Member::ReviewsController < ApplicationController
   end
     
   def index 
-    @reviews = Review.all
+    @reviews = current_user.reviews
   end 
   
   def show

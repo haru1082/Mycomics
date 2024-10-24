@@ -1,6 +1,6 @@
 class ComicBookshelf < ApplicationRecord
   
-  has_many :comics
-  has_many :bookshelfs
+  belongs_to :comics
+  belongs_to :bookshelf
   
 end
