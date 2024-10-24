@@ -33,11 +33,17 @@ Rails.application.routes.draw do
   # 管理者側
   namespace :admin do
     get "" => "homes#top", as: "top"
-
-    resources :users, only: [:edit, :show, :update, :destroy]
-    resources :reviews, only: [:index, :show, :destroy]
-    resources :bookshelves, only: [:index, :show]
+    
     resources :comics, only: [:new, :create, :show, :edit, :update, :destroy]
+    
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    
+    resources :users, only: [:edit, :show, :update, :destroy]
+    
+    resources :reviews, only: [:index, :show, :destroy]
+    
+    resources :bookshelves, only: [:index, :show]
+    
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

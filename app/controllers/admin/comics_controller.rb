@@ -3,14 +3,14 @@ class Admin::ComicsController < ApplicationController
 
   def new
     @comic = Comic.new
-    # @genres = Genre.all
+    @genres = Genre.all
   end
 
   def create
-    comic = Comic.new(comic_params)
-    if comic.save
+    @comic = Comic.new(comic_params)
+    if @comic.save
       flash[:comic_new] = "漫画が正常に登録されました。"
-      redirect_to top_path(@comic)
+      redirect_to top_path
     else
       flash[:comic_alert] = "漫画の登録に失敗しました。"
       render "new"
@@ -23,7 +23,7 @@ class Admin::ComicsController < ApplicationController
 
   def edit
     @comic = Comic.find(params[:id])
-    # @genres = Genre.all
+    @genres = Genre.all
   end
 
   def update

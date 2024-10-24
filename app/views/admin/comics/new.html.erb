@@ -17,6 +17,13 @@
     </div>
     
     <div class="row justify-content-md-center my-5">
+      <div class="col-3 text-right">ジャンル</div>
+      <div class="col-3">
+        <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "-- 選択してください --" %>
+      </div>
+    </div>
+    
+    <div class="row justify-content-md-center my-5">
       <div class="col-3 text-right">既巻数</div>
       <div class="col-3">
         <%= f.text_field :volume, autofocus: true, autocomplete: "volume", placeholder: "既巻数" %>
