@@ -7,8 +7,15 @@
   
   <div class = "row justify-content-md-center text-success mt-3"><%= flash[:comic_alert] %></div>
   
-  <%= form_with model: @comic, url: admin_comics_path(@comics), method: :post do |f| %>
-  
+  <%= form_with model: @comic, url: admin_comics_path, method: :post do |f| %>
+    
+    <div class="row justify-content-md-center my-5">
+      <div class="col-3 text-right">画像</div>
+      <div class="col-3">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+    
     <div class="row justify-content-md-center my-5">
       <div class="col-3 text-right">漫画タイトル</div>
       <div class="col-3">
@@ -24,7 +31,7 @@
     </div>
     
     <div class="row justify-content-md-center my-5">
-      <div class="col-3 text-right">既巻数</div>
+      <div class="col-3 text-right">最新巻</div>
       <div class="col-3">
         <%= f.text_field :volume, autofocus: true, autocomplete: "volume", placeholder: "既巻数" %>
       </div>
@@ -33,7 +40,7 @@
     <div class="row justify-content-md-center my-5">
       <div class="col-3 text-right">次巻発売日</div>
       <div class="col-3">
-        <%= f.text_field :next_date, autofocus: true, autocomplete: "next_date", placeholder: "次巻発売日" %>
+        <%= f.date_field :next_date, autofocus: true, autocomplete: "next_date", placeholder: "次巻発売日" %>
       </div>
     </div>
     

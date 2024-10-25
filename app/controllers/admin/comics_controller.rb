@@ -1,5 +1,6 @@
 class Admin::ComicsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_comic, only: [:show, :edit, :update, :destroy]
 
   def new
     @comic = Comic.new
@@ -8,34 +9,48 @@ class Admin::ComicsController < ApplicationController
 
   def create
     @comic = Comic.new(comic_params)
+    @genres = Genre.all
     if @comic.save
       flash[:comic_new] = "漫画が正常に登録されました。"
-      redirect_to top_path
+      redirect_to admin_top_path
     else
-      flash[:comic_alert] = "漫画の登録に失敗しました。"
-      render "new"
+      flash.now[:comic_alert] = "漫画の登録に失敗しました。"
+      render :new
     end
   end
 
   def show
-    @comic = current_user
+
   end
 
   def edit
-    @comic = Comic.find(params[:id])
     @genres = Genre.all
   end
 
   def update
+    if @comic.update(comic_params)
+      flash[:comic_show] = "漫画情報が更新されました。"
+      redirect_to admin_comic_path(@comic)
+    else
+      flash.now[:comic_alert] = "漫画情報の更新に失敗しました。"
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @comic.destroy
+    flash[:comic_] = "漫画が削除されました。"
+    redirect_to admin_comics_path
   end
 
   private
+  
+  def set_comic
+    @comic = Comic.find(params[:id])
+  end
 
   def comic_params
-    params.require(:comic).permit(:title, :volume, :next_date)
+    params.require(:comic).permit(:genre_id, :title, :volume, :next_date, :image)
   end
 
 end
