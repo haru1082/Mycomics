@@ -16,8 +16,12 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
 
-    resources :comics, only: [:index, :create]
-
+    resources :comics, only: [:index, :create] do
+      resources :comic_bookshelves, only: [:create, :destroy]
+    end
+    
+    resources :bookshelves, only: [:index, :show, :destroy]
+    
     get "/users/information/edit" => "users#edit", as: "edit_user"
     get "/users/my_page" => "users#show", as: "user"
     patch "/users/information" => "users#update", as: "update_user"
@@ -26,24 +30,21 @@ Rails.application.routes.draw do
 
     resources :reviews, only: [:new, :index, :show, :create, :edit, :update, :destroy]
 
-    resources :bookshelves, only: [:index, :show, :destroy]
-
   end
 
   # 管理者側
   namespace :admin do
     get "" => "homes#top", as: "top"
-    
+
     resources :comics, only: [:new, :create, :show, :edit, :update, :destroy]
     
+    resources :bookshelves, only: [:index, :show, :destroy]
+
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
-    
+
     resources :users, only: [:edit, :show, :update, :destroy]
-    
+
     resources :reviews, only: [:index, :show, :destroy]
-    
-    resources :bookshelves, only: [:index, :show]
-    
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

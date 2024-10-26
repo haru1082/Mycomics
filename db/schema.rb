@@ -53,12 +53,15 @@ ActiveRecord::Schema.define(version: 2024_10_25_062224) do
   end
 
   create_table "bookshelves", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
+    t.integer "user_id", null: false
+    t.integer "comic_id", null: false
     t.string "name"
     t.integer "owned_volume"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comic_id"], name: "index_bookshelves_on_comic_id"
+    t.index ["user_id", "comic_id"], name: "index_bookshelves_on_user_id_and_comic_id", unique: true
+    t.index ["user_id"], name: "index_bookshelves_on_user_id"
   end
 
   create_table "comic_bookshelves", force: :cascade do |t|
@@ -107,4 +110,13 @@ ActiveRecord::Schema.define(version: 2024_10_25_062224) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookshelves", "comics"
+  add_foreign_key "bookshelves", "users"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookshelves", "comics"
+  add_foreign_key "bookshelves", "users"
+  add_foreign_key "comic_bookshelves", "bookshelves"
+  add_foreign_key "comic_bookshelves", "comics"
+  add_foreign_key "comic_bookshelves", "users"
 end

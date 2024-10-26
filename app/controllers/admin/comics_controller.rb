@@ -20,7 +20,8 @@ class Admin::ComicsController < ApplicationController
   end
 
   def show
-
+    @bookshelves = @comic.bookshelves
+    @user_count = @bookshelves.count
   end
 
   def edit

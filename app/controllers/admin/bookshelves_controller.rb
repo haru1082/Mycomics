@@ -1,9 +1,12 @@
 class Admin::BookshelvesController < ApplicationController
-  
+  before_action :authenticate_admin!
+
   def index
-  end 
+    @bookshelves = Bookshelf.all.includes(:comics)
+  end
   
   def show
-  end 
+    @bookshelf = Bookshelf.find(params[:id])
+  end
   
 end

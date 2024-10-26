@@ -15,4 +15,8 @@ class Comic < ApplicationRecord
     image.attached? ? image : Rails.root.join("app/assets/images/no_image.jpg")
   end
   
+  def bookshelf_by?(user)
+    bookshelf.exists?(user_id: user.id)
+  end
+  
 end

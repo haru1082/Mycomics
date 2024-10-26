@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-5 text-center border-bottom">
+      <h4 class="px-4">漫画詳細</h4>
+    </div>
+  </div>
+
+  <div class = "row justify-content-md-center text-success mt-3"><%= flash[:user_show] %></div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 text-center">
+      <%= image_tag @comic.image.attached? ? @comic.image : "no_image.jpg", class: "img-fluid", style: "max-width: 260px;" %>
+    </div>
+    <div class="col-6 mt-3">
+      <table class="table table-bordered text-center">
+        <tr>
+          <th class="col-4 table-info">漫画タイトル</th>
+          <td><%= @comic.title %></td>
+        </tr>
+        <tr>
+          <th class="col-4 table-info">本棚追加人数</th>
+          <td><%= @total_likes %>人</td>
+        </tr>
+        <tr>
+          <th class="table-info">ジャンル</th>
+          <td><%= @comic.genre.name %></td>
+        </tr>
+        <tr>
+          <th class="table-info">最新巻</th>
+          <td><%= @comic.volume %>巻</td>
+        </tr>
+        <tr>
+          <th class="table-info">次巻発売日</th>
+          <td><%= @comic.next_date.strftime("%Y年%m月%d日") %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
