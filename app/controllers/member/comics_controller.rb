@@ -2,24 +2,27 @@ class Member::ComicsController < ApplicationController
   
   def index
     @comics = Comic.all
-    #@comic = @comics.page(params[:page]).per(10)
   end 
   
   def show
-    @comic = Comics.find(params[:id])
+    @comic = Comic.find(params[:id])
   end 
   
   def add_to_bookshelf
     @comic = Comic.find(params[:comic_id])
-    current_user.bookshelves.create(comic: @comic) unless current_user.bookshelves.exists?(comic: @comic)
-    redirect_to comics_path, notice: '漫画を本棚に追加しました。'
+    if current_user.bookshelves.find_or_create_by(comic: @comic)
+      flash[:notice] = "漫画を本棚に追加しました。"
+    end
+    redirect_to comics_path
   end
 
   def remove_from_bookshelf
     @comic = Comic.find(params[:comic_id])
-    current_user.bookshelves.find_by(comic: @comic)&.destroy
-    redirect_to comics_path, notice: '漫画を本棚から削除しました。'
-  end 
-  
+    if (bookshelf = current_user.bookshelves.find_by(comic: @comic))
+      bookshelf.destroy
+      flash[:notice] = '漫画を本棚から削除しました。'
+    end
+    redirect_back fallback_location: comics_path
+  end
   
 end

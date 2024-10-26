@@ -10,15 +10,16 @@
     <div class="col-12 text-center">
       <%= image_tag @comic.image.attached? ? @comic.image : "no_image.jpg", class: "img-fluid", style: "max-width: 260px;" %>
     </div>
-    <div class="col-6 mt-3">
+      <% if current_user.bookshelves.exists?(comic_id: @comic.id) %>
+        <%= button_to 'いいね解除', comic_bookshelf_path(comic), method: :delete, class: 'btn btn-danger', remote: true %>
+      <% else %>
+        <%= button_to 'いいね', comic_comic_bookshelves_path(@comic), method: :post, class: 'btn btn-success', remote: true %>
+      <% end %>
+    <div class="col-6 my-5">
       <table class="table table-bordered text-center">
         <tr>
           <th class="col-4 table-info">漫画タイトル</th>
           <td><%= @comic.title %></td>
-        </tr>
-        <tr>
-          <th class="col-4 table-info">本棚追加人数</th>
-          <td><%= @total_likes %>人</td>
         </tr>
         <tr>
           <th class="table-info">ジャンル</th>
