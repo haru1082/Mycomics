@@ -17,13 +17,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about", as: "about"
 
     resources :comics, only: [:index, :show] do
-      member do
-        post "add_to_bookshelf"
-        delete "remove_from_bookshelf"
-      end 
-      
       resources :comic_bookshelves, only: [:create, :destroy]
-      
     end
     
     resources :bookshelves, only: [:index, :show, :destroy]

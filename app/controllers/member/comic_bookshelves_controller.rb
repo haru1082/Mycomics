@@ -7,7 +7,7 @@ class Member::ComicBookshelvesController < ApplicationController
     flash[:success] = "漫画を本棚に追加しました。"
     redirect_to comics_path
   end
-
+  
   def destroy
     @comic = Comic.find(params[:id])
     bookshelf = current_user.comic_bookshelves.find_by(comic: @comic)

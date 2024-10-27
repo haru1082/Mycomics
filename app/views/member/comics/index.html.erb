@@ -16,13 +16,9 @@
             <h5 class="card-title"><%= link_to comic.title, comic_path(comic) %></h5>
             <p class="card-title">発売中 : <%= comic.volume %>巻</p>
             <p class="card-title">次巻発売日 : <%= comic.next_date.strftime("%Y年%m月%d日") %></p>
-            <div class="d-flex justify-content-between">
-              <% if current_user.bookshelves.exists?(comic_id: comic.id) %>
-                <%= button_to 'いいね解除', comic_bookshelf_path(comic), method: :delete, class: 'btn btn-danger', remote: true %>
-              <% else %>
-                <%= button_to 'いいね', comic_comic_bookshelves_path(comic), method: :post, class: 'btn btn-success', remote: true %>
-              <% end %>
-            </div>
+            <!--<button class="like-btn">-->
+            <!--  <%#= current_user.bookshelf?(comic) ? "本棚に追加済み" : "本棚に追加" %>-->
+            <!--</button>-->
           </div>
         </div>
       </div>

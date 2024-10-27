@@ -2,7 +2,7 @@ class Member::BookshelvesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @comics = current_user.bookshelves.includes(:comic).map(&:comic)
+    @comics = current_user.bookshelves.includes(image_attachment: :blob)
   end 
   
   def show

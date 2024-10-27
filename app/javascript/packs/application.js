@@ -13,6 +13,12 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 
+import { setupBookshelfButtons } from "../modules/bookshelves";
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', () => {
+  setupBookshelfButtons();
+});
