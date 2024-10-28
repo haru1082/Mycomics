@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_25_062224) do
+ActiveRecord::Schema.define(version: 2024_10_28_121713) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,10 +65,14 @@ ActiveRecord::Schema.define(version: 2024_10_25_062224) do
   end
 
   create_table "comic_bookshelves", force: :cascade do |t|
-    t.integer "bookshelves_id"
-    t.integer "comics_id"
+    t.integer "user_id"
+    t.integer "comic_id"
+    t.integer "bookshelf_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bookshelf_id"], name: "index_comic_bookshelves_on_bookshelf_id"
+    t.index ["comic_id"], name: "index_comic_bookshelves_on_comic_id"
+    t.index ["user_id"], name: "index_comic_bookshelves_on_user_id"
   end
 
   create_table "comics", force: :cascade do |t|
@@ -108,10 +112,6 @@ ActiveRecord::Schema.define(version: 2024_10_25_062224) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookshelves", "comics"
-  add_foreign_key "bookshelves", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookshelves", "comics"

@@ -4,7 +4,7 @@ class CreateComicBookshelves < ActiveRecord::Migration[6.1]
       t.references :user, foreign_key: true
       t.references :comic, foreign_key: true
       t.references :bookshelf, foreign_key: true
-      
+
       t.timestamps
     end
   end
