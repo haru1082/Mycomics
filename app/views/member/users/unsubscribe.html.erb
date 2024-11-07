@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-5 text-center border-bottom">
+      <h4 class="px-4">退会確認画面</h4>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-lg-8 text-center">
+      <h2>退会しますか?</h2>
+      <h3>
+      退会すると、会員登録情報や<br>
+      これまでMy本棚に追加した漫画が削除されます。<br>
+      退会する場合は、「退会する」をクリックしてください。<br>
+      </h3>
+    </div>
+  </div>
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-lg-5 text-right">
+      <%= link_to "退会しない", user_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-lg-5">
+      <%= link_to "退会する", withdraw_path, class: "btn btn-danger", method: :patch, data: { confirm: "本当に退会しますか？" } %>
+    </div>
+  </div>
+</div>

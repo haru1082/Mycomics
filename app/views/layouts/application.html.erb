@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mycomics</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/b57b19ae52.js" crossorigin="anonymous"></script>
+  </head>
+  
+  
+  <body class="d-flex flex-column vh-100">
+    <header class="border-bottom" style ="background-color:#f8f8ff;">
+      <% if admin_signed_in? %>
+        <%= render 'layouts/header_admin' %>
+      <% else %>
+        <%= render 'layouts/header_member' %>
+      <% end %>
+    </header>
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+    <footer class="border-top" style ="background-color:#f8f8ff;">
+      <%= render 'layouts/footer' %>
+    </footer>
+  </body>
+
+</html>

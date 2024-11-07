@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-5 text-center border-bottom">
+      <h4 class="px-4">漫画詳細編集</h4>
+    </div>
+  </div>
+  
+  <%= form_with(model: @comic, url: admin_comic_path(@comic), method: :PATCH) do |f| %>
+
+    <div class="row justify-content-md-center mt-5">
+      <div class="col-3 text-right">画像</div>
+      <div class="col-3">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+    
+    <div class="row justify-content-md-center mt-5">
+      <div class="col-3 text-right">漫画タイトル</div>
+      <div class="col-3">
+        <%= f.text_field :title, autofocus: true, autocomplete: "title", placeholder: "漫画タイトル" %>
+      </div>
+    </div>
+    
+    <div class="row justify-content-md-center mt-5">
+      <div class="col-3 text-right">ジャンル</div>
+      <div class="col-3">
+        <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "-- 選択してください --" %>
+      </div>
+    </div>
+    
+    <div class="row justify-content-md-center mt-5">
+      <div class="col-3 text-right">既巻数</div>
+      <div class="col-3">
+        <%= f.text_field :volume, autofocus: true, autocomplete: "volume", placeholder: "既巻数" %>
+      </div>
+    </div>
+    
+    <div class="row justify-content-md-center mt-5">
+      <div class="col-3 text-right">次巻発売日</div>
+      <div class="col-3">
+        <%= f.date_field :next_date, autofocus: true, autocomplete: "next_date", placeholder: "次巻発売日" %>
+      </div>
+    </div>
+    
+    <div class = "row justify-content-md-center my-3">
+      <div class="col-lg-3 text-center">
+       <%= f.submit "保存する", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

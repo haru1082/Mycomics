@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-5 text-center border-bottom">
+      <h4 class="px-4">登録内容編集</h4>
+    </div>
+  </div>
+  <div class = "row justify-content-md-center text-success mt-3"><%= flash[:user_edit] %></div>
+  <%= form_with(model: @user, url: update_user_path, method: :PATCH) do |f| %>
+
+    <div class = "row justify-content-md-center mt-5">
+       <div class="col-lg-3 text-right">ニックネーム</div>
+       <div class="col-lg-3">
+         <%= f.text_field :nickname, autoforcus: true, autocomplete: "nickname", placeholder: "新しいニックネーム" %>
+       </div>
+    </div>
+
+    <div class = "row justify-content-md-center mt-5">
+       <div class="col-lg-3 text-right">メールアドレス</div>
+       <div class="col-lg-3">
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "new.mail@example.com" %>
+       </div>
+    </div>
+
+    <div class = "row justify-content-md-center mt-5">
+      <div class="col-lg-3 text-right">
+       <%= f.submit "保存する", class: "btn btn-success" %>
+      </div>
+      <div class="col-lg-3">
+       <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
