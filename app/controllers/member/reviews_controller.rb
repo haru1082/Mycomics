@@ -7,6 +7,7 @@ class Member::ReviewsController < ApplicationController
   
   def create
     @review = Review.new(review_params)
+    @review.score = Language.get_data(review_params[:body])
     @review.user_id = current_user.id
     if @review.save
       flash[:review] = "投稿に成功しました。"
