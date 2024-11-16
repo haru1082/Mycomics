@@ -12,7 +12,7 @@ class Member::BookshelvesController < ApplicationController
   def destroy
     @bookshelf = current_user.bookshelves.find(params[:id])
     @bookshelf.destroy
-    flash[:success] = "本棚を削除しました。"
+    flash[:success] = "本棚から削除しました。"
     redirect_to bookshelves_path
   end 
   

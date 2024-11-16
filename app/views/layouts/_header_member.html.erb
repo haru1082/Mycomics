@@ -18,11 +18,11 @@
             <% end %>
           </li>
 
-          <!--<li class="nav-item">-->
-          <!--  <%#= link_to bookshelves_path, class: "nav-link text-dark text-right" do %>-->
-          <!--    <button class="btn" style="background-color:#ccff99">本棚<i class="fa-sharp-duotone fa-solid fa-books"></i></button>-->
-          <!--  <%# end %>-->
-          <!--</li>-->
+          <li class="nav-item">
+            <%= link_to bookshelves_path, class: "nav-link text-dark text-right" do %>
+              <button class="btn" style="background-color:#ccff99">本棚<i class="fa-sharp-duotone fa-solid fa-books"></i></button>
+            <% end %>
+          </li>
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark text-right" do %>
               <button class="btn" style="background-color:#ffd700">ログアウト</button>
