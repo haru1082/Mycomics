@@ -20,18 +20,27 @@ class Member::ReviewsController < ApplicationController
   # end
   
   def create
-    @review = @comic.reviews.new(review_params)
+
+    @review = if @comic
+                @comic.reviews.new(review_params)
+              else
+                Review.new(review_params)
+              end
+              
     @review.user = current_user
+    @review.title = @comic.title if @comic
+    @review.score = Language.get_data(review_params[:body])
     if @review.save
-      flash[:success] = "レビューを投稿しました。"
+      flash[:alert] = "レビューを投稿しました。"
+      redirect_to reviews_path
     else
-      flash[:error] = "レビューの投稿に失敗しました。"
+      flash[:alert] = "レビューの投稿に失敗しました。: #{@review.errors.full_messages.join(', ')}"
+      render @comic ? "member/comics/show" : :new
     end
-    redirect_to comic_path(@comic)
   end
     
   def index 
-    @reviews = current_user.reviews
+    @reviews = Review.includes(:comic, :user).order(created_at: :desc)
     @comic = Comic.find(params[:comic_id]) if params[:comic_id].present?
   end 
   
@@ -63,10 +72,10 @@ class Member::ReviewsController < ApplicationController
   private
   
   def set_comic
-    @comic = Comic.find(params[:comic_id])
+    @comic = Comic.find(params[:comic_id]) if params[:comic_id]
   end
   
   def review_params
-    params.require(:review).permit(:title, :body)
+    params.require(:review).permit(:title, :body, :score)
   end 
 end

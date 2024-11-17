@@ -5,8 +5,8 @@
     </div>
   </div>
   <div class = "row justify-content-md-center text-success mt-3"><%= flash[:review] %></div>
+  
   <div class="row justify-content-center mt-5">
-
     <table class="table table-bordered text-center">
       <thead class="table-info text-center">
         <th class="col-3">漫画タイトル</th>
@@ -15,20 +15,22 @@
 
       </thead>
       <tbody>
-        <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to review_path(review) do %>
-              <%= review.title %>
-              <% end %>
-            </td>
-            <td>
-              <%= review.body %>
-            </td>
-            <td>
-              <span class="sentiment-score"><%= review.score %></span>
-            </td>
-          </tr>
+        <% if @reviews.any? %>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td>
+                <%= link_to review.comic.title, comic_path(review.comic) %>
+              </td>
+              <td>
+                <%= review.body %>
+              </td>
+              <td>
+                <span class="sentiment-score"><%= review.score %></span>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <p>まだ投稿がありません。</p>
         <% end %>
       </tbody>
     </table>

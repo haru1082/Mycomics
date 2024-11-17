@@ -18,10 +18,10 @@ Rails.application.routes.draw do
 
     resources :comics, only: [:index, :show] do
       resources :comic_bookshelves, only: [:create, :destroy]
-      resources :reviews, only: [:show, :create, :edit, :update, :destroy]
+      resources :reviews, only: [:new, :show, :create, :edit, :update, :destroy]
     end
     
-    resources :reviews, only: [:new, :index]
+    resources :reviews, only: [:new, :index, :create]
     
     resources :bookshelves, only: [:index, :show, :destroy]
     
@@ -30,8 +30,6 @@ Rails.application.routes.draw do
     patch "/users/information" => "users#update", as: "update_user"
     get "/users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/withdraw" => "users#withdraw", as: "withdraw"
-
-    
 
   end
 
