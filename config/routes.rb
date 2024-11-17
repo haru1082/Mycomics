@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   # 管理者側
   namespace :admin do
-    get "" => "homes#top", as: "top"
+    root to: "homes#top", as: "top"
 
     resources :comics, only: [:new, :create, :show, :edit, :update, :destroy]
     

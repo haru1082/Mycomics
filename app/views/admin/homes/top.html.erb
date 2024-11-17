@@ -4,22 +4,36 @@
       <h4 class="px-4">漫画一覧</h4>
     </div>
   </div>
+  
+  <div class="row justify-content-md-center mt-3">
+    <div class="col-md-6 mx-auto">
+      <%= form_with(url: admin_top_path, method: :get, local: true, class: "form-inline") do %>
+        <%= text_field_tag :title, params[:title], placeholder: "タイトルで検索", class: "form-control mr-2" %>
+        <%= select_tag :genre_id, options_from_collection_for_select(Genre.all, :id, :name, selected: params[:genre_id]), include_blank: "ジャンルを選択", class: "form-control mr-2" %>
+        <%= submit_tag "検索", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="row mt-5">
-    <% @comics.each do |comic| %>
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card mb-4" style="max-width: 260px;">
-          <div class="card-img-top" style="height: 200px; background-color: #f8f9fa;">
-          <%= image_tag comic.image.attached? ? comic.image : 'no_image.jpg', class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: contain;' %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to comic.title, admin_comic_path(comic) %></h5>
-            <p class="card-title">発売中 : <%= comic.volume %>巻</p>
-            <p class="card-title">次巻発売日 : <%= comic.next_date.strftime("%Y年%m月%d日") %></p>
+    <% if @comics.empty? %>
+      <p>該当する漫画は見つかりませんでした。</p>
+    <% else %>
+      <% @comics.each do |comic| %>
+        <div class="col-12 col-md-4 col-lg-3">
+          <div class="card mb-4" style="max-width: 260px;">
+            <div class="card-img-top" style="height: 200px; background-color: #f8f9fa;">
+            <%= image_tag comic.image.attached? ? comic.image : 'no_image.jpg', class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: contain;' %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to comic.title, admin_comic_path(comic) %></h5>
+              <p class="card-title">ジャンル : <%= comic.genre.name %></p>
+              <p class="card-title">発売中 : <%= comic.volume %>巻</p>
+              <p class="card-title">次巻発売日 : <%= comic.next_date.strftime("%Y年%m月%d日") %></p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
-  <%= paginate @comics %>
 </div>

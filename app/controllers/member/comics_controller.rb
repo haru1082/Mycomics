@@ -2,7 +2,15 @@ class Member::ComicsController < ApplicationController
   
   def index
     @comics = Comic.all
-  end 
+    # タイトル検索
+    if params[:title].present?
+      @comics = @comics.where('title LIKE ?', "%#{params[:title]}%")
+    end
+    # ジャンル検索
+    if params[:genre_id].present?
+      @comics = @comics.where(genre_id: params[:genre_id])
+    end
+  end
   
   def show
     @comic = Comic.find(params[:id])
