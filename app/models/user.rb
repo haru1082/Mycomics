@@ -6,7 +6,7 @@ class User < ApplicationRecord
          
   # has_many :comic_bookshelves  
   # has_many :bookshelves, through: :comic_bookshelves, source: :comic
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   
   has_many :bookshelves
   has_many :comics, through: :bookshelves

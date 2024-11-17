@@ -3,7 +3,7 @@ class Comic < ApplicationRecord
   belongs_to :genre
   # has_many :comic_bookshelves
   # has_many :bookshelves, through: :comic_bookshelves
-  
+  has_many :reviews, dependent: :destroy
   has_many :bookshelves
   has_many :users, through: :bookshelves
   

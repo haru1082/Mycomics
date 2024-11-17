@@ -10,28 +10,25 @@
     <table class="table table-bordered text-center">
       <thead class="table-info text-center">
         <th class="col-3">漫画タイトル</th>
-        <th class="col-2">評価</th>
         <th class="col-5">感想</th>
         <th class="col-2">AI分析評価</th>
 
       </thead>
       <tbody>
         <% @reviews.each do |review| %>
-        <tr>
-          <td>
-            <%= link_to review_path(review) do %>
-            <%= review.title %>
-            <% end %>
-          </td>
-          <td></td>
-
-          <td>
-            <%= review.body %>
-          </td>
-          <td>
-            <span class="sentiment-score"><%= review.score %></span>
-          </td>
-        </tr>
+          <tr>
+            <td>
+              <%= link_to review_path(review) do %>
+              <%= review.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= review.body %>
+            </td>
+            <td>
+              <span class="sentiment-score"><%= review.score %></span>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>

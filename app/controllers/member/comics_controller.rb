@@ -14,6 +14,7 @@ class Member::ComicsController < ApplicationController
   
   def show
     @comic = Comic.find(params[:id])
+    @reviews = @comic.reviews.includes(:user)
   end 
   
   def add_to_bookshelf

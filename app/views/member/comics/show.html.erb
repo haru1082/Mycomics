@@ -30,5 +30,14 @@
           <td><%= @comic.next_date.strftime("%Y年%m月%d日") %></td>
         </tr>
       </table>
+      <div class="new-review mt-4">
+        <h4>レビューを投稿する</h4>
+        <%= form_with(model: [@comic, @comic.reviews.new], local: true) do |form| %>
+          <div class="form-group">
+            <%= form.text_area :content, class: "form-control", placeholder: "レビューを入力", rows: 3 %>
+          </div>
+          <%= form.submit "投稿", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>

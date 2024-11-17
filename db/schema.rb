@@ -94,9 +94,11 @@ ActiveRecord::Schema.define(version: 2024_11_08_072250) do
     t.integer "user_id"
     t.string "title"
     t.text "body"
+    t.integer "comic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "score"
+    t.index ["comic_id"], name: "index_reviews_on_comic_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,4 +122,5 @@ ActiveRecord::Schema.define(version: 2024_11_08_072250) do
   add_foreign_key "comic_bookshelves", "bookshelves"
   add_foreign_key "comic_bookshelves", "comics"
   add_foreign_key "comic_bookshelves", "users"
+  add_foreign_key "reviews", "comics"
 end
