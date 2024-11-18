@@ -4,13 +4,14 @@
       <h4 class="px-4">投稿一覧</h4>
     </div>
   </div>
-  <div class = "row justify-content-md-center text-success mt-3"><%= flash[:review] %></div>
-  
-  <div class="row justify-content-center mt-5">
+  <div class = "row justify-content-md-center text-success mt-3"><%= flash[:comicreview_alert] %></div>
+
+  <div class="row justify-content-center mt-3">
     <table class="table table-bordered text-center">
       <thead class="table-info text-center">
-        <th class="col-3">漫画タイトル</th>
-        <th class="col-5">感想</th>
+        <th class="col-2">漫画タイトル</th>
+        <th class="col-6">感想</th>
+        <th class="col-2">投稿日</th>
         <th class="col-2">AI分析評価</th>
 
       </thead>
@@ -25,6 +26,9 @@
                 <%= review.body %>
               </td>
               <td>
+                <%= link_to review.created_at.strftime("%Y年%m月%d日 %H:%M"), review_path(review) %>
+              </td>
+              <td>
                 <span class="sentiment-score"><%= review.score %></span>
               </td>
             </tr>
@@ -34,11 +38,5 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-
-  <div class = "row justify-content-center mt-3 mb-5">
-    <div class="col-auto ">
-      <%= link_to "新規投稿", new_review_path, class: "btn btn-success" %>
-    </div>
   </div>
 </div>

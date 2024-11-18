@@ -18,10 +18,10 @@ Rails.application.routes.draw do
 
     resources :comics, only: [:index, :show] do
       resources :comic_bookshelves, only: [:create, :destroy]
-      resources :reviews, only: [:new, :show, :create, :edit, :update, :destroy]
+      resources :reviews, only: [:new, :create, :edit, :update, :destroy]
     end
     
-    resources :reviews, only: [:new, :index, :create]
+    resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
     
     resources :bookshelves, only: [:index, :show, :destroy]
     

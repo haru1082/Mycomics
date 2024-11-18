@@ -22,6 +22,8 @@ class Admin::ComicsController < ApplicationController
   def show
     @bookshelves = @comic.bookshelves
     @user_count = @bookshelves.count
+    @comic = Comic.find(params[:id])
+    @reviews = @comic.reviews.includes(:user).order(created_at: :desc)
   end
 
   def edit

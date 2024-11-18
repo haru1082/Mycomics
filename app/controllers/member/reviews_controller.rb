@@ -30,12 +30,14 @@ class Member::ReviewsController < ApplicationController
     @review.user = current_user
     @review.title = @comic.title if @comic
     @review.score = Language.get_data(review_params[:body])
+    
     if @review.save
-      flash[:alert] = "レビューを投稿しました。"
+      flash[:comicreview_alert] = "レビューを投稿しました。"
       redirect_to reviews_path
     else
-      flash[:alert] = "レビューの投稿に失敗しました。: #{@review.errors.full_messages.join(', ')}"
-      render @comic ? "member/comics/show" : :new
+      @reviews = @comic.reviews.includes(:user).order(created_at: :desc)
+      flash[:comicreview_alert] = "レビューの投稿に失敗しました。レビューを入力してください"
+      render "member/comics/show"
     end
   end
     
