@@ -6,37 +6,18 @@ class Member::ReviewsController < ApplicationController
     @review = Review.new
   end 
   
-  # def create
-  #   @review = Review.new(review_params)
-  #   @review.score = Language.get_data(review_params[:body])
-  #   @review.user_id = current_user.id
-  #   if @review.save
-  #     flash[:review] = "投稿に成功しました。"
-  #     redirect_to reviews_path
-  #   else
-  #     flash.now[:alert] = "投稿に失敗しました。"
-  #     render "new"
-  #   end 
-  # end
-  
   def create
-
-    @review = if @comic
-                @comic.reviews.new(review_params)
-              else
-                Review.new(review_params)
-              end
-              
+    @review = @comic.reviews.new(review_params)
     @review.user = current_user
-    @review.title = @comic.title if @comic
+    @review.title = @comic.title
     @review.score = Language.get_data(review_params[:body])
     
     if @review.save
       flash[:comicreview_alert] = "レビューを投稿しました。"
-      redirect_to reviews_path
+      redirect_to comic_path(@comic)
     else
-      @reviews = @comic.reviews.includes(:user).order(created_at: :desc)
       flash[:comicreview_alert] = "レビューの投稿に失敗しました。レビューを入力してください"
+      @reviews = @comic.reviews.includes(:user).order(created_at: :desc)
       render "member/comics/show"
     end
   end
