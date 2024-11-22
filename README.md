@@ -27,7 +27,9 @@
 
 
 ## 設計書
-後ほど作成予定
+![設計書（会員）](https://github.com/user-attachments/assets/a4f90966-d5e7-48a3-a263-c110055a73af)
+![設計書（管理者）](https://github.com/user-attachments/assets/a624a167-120d-47d4-a99f-3da61e23f655)
+
 ​
 ## 開発環境
 - OS：Linux(CentOS)
